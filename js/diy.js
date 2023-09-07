@@ -1,3 +1,5 @@
+sun_icon = '<i class="fa-solid fa-sun" style="color: #fff"></i>'
+moon_icon = '<i class="fa-solid fa-moon" style="color: #000"></i>'
 $(document).ready(()=>{
     console.log(document.getElementById('darkmode'))
 
@@ -8,18 +10,19 @@ $(document).ready(()=>{
             document.body.classList.add('dark');
         }
     }
-    document.getElementById('darkmode').innerHTML = document.querySelector("body").classList.contains("dark")?"🌙":"🌞";
+    $("#darkmode").html(document.querySelector("body").classList.contains("dark")?sun_icon:moon_icon)
     console.log('load diy.js')
+    console.log(document.getElementById('darkmode'))
 })
 
 function switchDarkMode() {
     if ($('body').hasClass('dark')) {
-        $("#dark").html("🌞");
+        $("#darkmode").html(moon_icon);
         document.body.classList.remove('dark');
         localStorage.setItem('noDark', '1');
         localStorage.setItem('dark', '0');
     } else {
-        $("#dark").html("🌙"); 
+        $("#darkmode").html(sun_icon); 
         document.body.classList.add('dark');
         localStorage.setItem('dark', '1');
         localStorage.setItem('noDark', '0');
