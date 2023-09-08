@@ -1,12 +1,10 @@
+/* 修补标签置顶 */
 #back-to-top.rise-up {
   z-index: 999;
 }
-.widget.card#toc {
-  background-color: #182333;
-}
 /*暗黑模式*/
 .dark {
-  background-color: #282c34;
+  background-color: #121212;
 /* 背景遮罩 */
 /* 主体 */
 /* 顶栏 */
@@ -19,6 +17,29 @@
 /* 友链页 */
 /* note标签 配色有点丑 */
 }
+.dark .searchbox .searchbox-body {
+  background-color: #9f9f9f;
+}
+.dark .searchbox .searchbox-input,
+.dark .searchbox .searchbox-close {
+  background-color: #ddd;
+}
+.dark .searchbox .searchbox-result-section header {
+  color: #0d0d0d;
+}
+.dark .searchbox .searchbox-result-title,
+.dark .searchbox .searchbox-result-preview {
+  color: #1e1e1e;
+}
+.dark .searchbox .searchbox-result-item:not(:active):not(.active) .searchbox-result-preview {
+  color: #858585;
+}
+.dark .searchbox .searchbox-result-title-secondary {
+  color: #ddd;
+}
+.dark .searchbox .searchbox-result-item:not(.disabled):not(.active):not(:active):hover {
+  background-color: #c1c1c1;
+}
 .dark .mask {
   background-color: rgba(0,0,0,0.7) !important;
 }
@@ -30,13 +51,13 @@
   background-color: #494f5d;
 }
 .dark .navbar-menu {
-  background-color: #000;
+  background-color: #1e1e1e;
 }
 .dark img {
   filter: brightness(50%);
 }
 .dark .card {
-  background-color: #000;
+  background-color: #1e1e1e;
 }
 .dark .button.is-light,
 .dark article.article .article-more {
@@ -48,10 +69,10 @@
   color: #a09c9c;
 }
 .dark .navbar {
-  background-color: #000;
+  background-color: #1e1e1e;
 }
 .dark .footer {
-  background-color: #000;
+  background-color: #1e1e1e;
 }
 .dark .menu-list a.is-active {
   background-color: #282c34;
@@ -65,6 +86,15 @@
 .dark p,
 .dark .index-info a {
   color: #a09c9c !important;
+}
+.dark .title,
+.dark .content h1,
+.dark .content h2,
+.dark .content h3,
+.dark .content h4,
+.dark .content h5,
+.dark .content h6 {
+  color: #a09c9c;
 }
 .dark .markdown-body h1,
 .dark .markdown-body h2,
