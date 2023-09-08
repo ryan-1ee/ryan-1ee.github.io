@@ -17,25 +17,32 @@
 /* 友链页 */
 /* note标签 配色有点丑 */
 }
+.dark .cc-window {
+  color: #a09c9c !important;
+  background-color: #1e1e1e !important;
+}
+.dark .cc-window .cc-compliance > .cc-btn {
+  background-color: #5a5b5d;
+}
 .dark .searchbox .searchbox-body {
-  background-color: #9f9f9f;
+  background-color: #1e1e1e;
 }
 .dark .searchbox .searchbox-input,
 .dark .searchbox .searchbox-close {
   background-color: #ddd;
 }
 .dark .searchbox .searchbox-result-section header {
-  color: #0d0d0d;
+  color: #858585;
 }
 .dark .searchbox .searchbox-result-title,
 .dark .searchbox .searchbox-result-preview {
-  color: #1e1e1e;
+  color: #858585;
 }
 .dark .searchbox .searchbox-result-item:not(:active):not(.active) .searchbox-result-preview {
   color: #858585;
 }
 .dark .searchbox .searchbox-result-title-secondary {
-  color: #ddd;
+  color: #858585;
 }
 .dark .searchbox .searchbox-result-item:not(.disabled):not(.active):not(:active):hover {
   background-color: #c1c1c1;
@@ -110,7 +117,7 @@
   color: #fff;
 }
 .dark .button.is-primary {
-  background-color: #282c34;
+  background-color: #5a5b5d;
   color: #a09c9c;
 }
 .dark .button.is-primary:hover {
