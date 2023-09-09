@@ -17,6 +17,13 @@
 /* 友链页 */
 /* note标签 配色有点丑 */
 }
+.dark .link-muted:hover {
+  color: #fff !important;
+}
+.dark .cc-window .cc-compliance > .cc-btn:hover,
+.dark .cc-window .cc-compliance > .cc-btn:focus {
+  background-color: #121212;
+}
 .dark .cc-window {
   color: #a09c9c !important;
   background-color: #1e1e1e !important;
