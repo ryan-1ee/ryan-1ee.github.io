@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Ubuntu下自动挂载硬盘 - Ryan&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Ryan&#039;s Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Ryan&#039;s Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="test"><meta property="og:type" content="blog"><meta property="og:title" content="Ubuntu下自动挂载硬盘"><meta property="og:url" content="https://the-wolf.eu.org/posts/2023/09/2979931854.html"><meta property="og:site_name" content="Ryan&#039;s Blog"><meta property="og:description" content="test"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/ryan-1ee/blog_img/master/img/2023/09/10175903.png"><meta property="article:published_time" content="2023-09-10T11:27:32.000Z"><meta property="article:modified_time" content="2023-09-10T12:06:36.180Z"><meta property="article:author" content="Ryan"><meta property="article:tag" content="linux"><meta property="article:tag" content="Ubuntu"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/ryan-1ee/blog_img/master/img/2023/09/10175903.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://the-wolf.eu.org/posts/2023/09/2979931854.html"},"headline":"Ubuntu下自动挂载硬盘","image":["https://raw.githubusercontent.com/ryan-1ee/blog_img/master/img/2023/09/10175903.png"],"datePublished":"2023-09-10T11:27:32.000Z","dateModified":"2023-09-10T12:06:36.180Z","author":{"@type":"Person","name":"Ryan"},"publisher":{"@type":"Organization","name":"Ryan's Blog","logo":{"@type":"ImageObject","url":null}},"description":"test"}</script><link rel="canonical" href="https://the-wolf.eu.org/posts/2023/09/2979931854.html"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://font.the-wolf.eu.org/fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/diy.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9363493651623593" crossorigin="anonymous"></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">Ryan&#039;s Blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><div class="navbar-item" id="darkmode" title="夜间模式" onclick="switchDarkMode()"></div><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://raw.githubusercontent.com/ryan-1ee/blog_img/master/img/2023/09/10175903.png" alt="Ubuntu下自动挂载硬盘"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-10T11:27:32.000Z" title="2023/9/10 19:27:32">2023-09-10</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/linux/"> <i class="fa-solid fa-folder-open"></i>  linux</a></span><span class="level-item" id="busuanzi_container_page_pv"><i class="fas fa-eye"></i> 总阅读 <span id="busuanzi_value_page_pv">0</span> 次</span></div></div><h1 class="title is-3 is-size-4-mobile">Ubuntu下自动挂载硬盘</h1><div class="content"><p>最近把工位的旧电脑倒腾了一下，配置如下</p>
+<table>
+<thead>
+<tr>
+<th align="left">部件</th>
+<th align="left">型号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CPU</td>
+<td align="left">10代i5</td>
+</tr>
+<tr>
+<td align="left">内存</td>
+<td align="left">16gb ddr4</td>
+</tr>
+<tr>
+<td align="left">固态</td>
+<td align="left">镁光m2 256GB</td>
+</tr>
+<tr>
+<td align="left">硬盘</td>
+<td align="left">西数垂直读写 1T</td>
+</tr>
+</tbody></table>
+<p>重装Ubuntu之后发现机械硬盘格式不对，所以需要转化并自动挂载</p>
+<h2 id="硬盘在哪里"><a href="#硬盘在哪里" class="headerlink" title="硬盘在哪里"></a>硬盘在哪里</h2><p>Liunx中的设备都是在**&#x2F;dev**下的，但是&#x2F;dev下设备太多了，一个个找不靠谱,所以使用这段命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo fdisk -l<br><br></code></pre></td></tr></table></figure>
+<p>找到这样的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">Disk /dev/sda: 931.51 GiB, 1000204886016 bytes, 1953525168 sectors<br>Disk model: WDC ****<br>Units: sectors of 1 * 512 = 512 bytes<br>Sector size (logical/physical): 512 bytes / 4096 bytes<br>I/O size (minimum/optimal): 4096 bytes / 4096 bytes<br>Disklabel <span class="hljs-built_in">type</span>: gpt<br>Disk identifier: ****<br><br>Device     Start        End    Sectors   Size Type<br><span class="hljs-comment">#  /dev/sda1 就是硬盘的路径，这里要记住</span><br>**/dev/sda1**   2048 1953525134 1953523087 931.5G Linux filesystem<br></code></pre></td></tr></table></figure>
+<h2 id="硬盘分区"><a href="#硬盘分区" class="headerlink" title="硬盘分区"></a>硬盘分区</h2><p>我这里是已经转化格式之后的，所以显示的Type是<strong>Linux filesystem</strong>，如果你还没有转化格式，那么就按照下面的步骤来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo fdisk /dev/sda1<br><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 如果你的磁盘已经挂载，那这里可能就会弹出提示,这样的话需要将硬盘使用umount进行卸载(自行百度)</span><br>This disk is currently <span class="hljs-keyword">in</span> use - repartitioning is probably a bad idea.<br>It<span class="hljs-string">&#x27;s recommended to umount all file systems, and swapoff all swap</span><br><span class="hljs-string">partitions on this disk.</span><br></code></pre></td></tr></table></figure>
+<p>如果你这里没出问题，那么就可以按下<strong>m</strong>查看帮助</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): m<br><br>Help:<br><br>  GPT<br>   M   enter protective/hybrid MBR<br><br>  Generic<br>   d   delete a partition<br>   F   list free unpartitioned space<br>   l   list known partition types<br>   n   add a new partition<br>   p   <span class="hljs-built_in">print</span> the partition table<br>   t   change a partition <span class="hljs-built_in">type</span><br>   v   verify the partition table<br>   i   <span class="hljs-built_in">print</span> information about a partition<br><br>  Misc<br>   m   <span class="hljs-built_in">print</span> this menu<br>   x   extra functionality (experts only)<br><br>  Script<br>   I   load disk layout from sfdisk script file<br>   O   dump disk layout to sfdisk script file<br><br>  Save &amp; Exit<br>   w   write table to disk and <span class="hljs-built_in">exit</span><br>   q   quit without saving changes<br><br>  Create a new label<br>   g   create a new empty GPT partition table<br>   G   create a new empty SGI (IRIX) partition table<br>   o   create a new empty DOS partition table<br>   s   create a new empty Sun partition table<br><br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>):<br><br></code></pre></td></tr></table></figure>
+<p>如果你的硬盘有多个分区，记得多按几下 <strong>d</strong> 删除一下分区<br>然后使用<strong>n</strong> 创建分区，大小可以自行定义,我这里为了方便直接使用整个磁盘，敲了3次回车。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): d<br><br>Selected partition 1<br>Partition 1 has been deleted.<br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): n<br>Partition number (1-128, default 1):<br>First sector (34-1953525134, default 2048):<br>Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (2048-1953525134, default 1953525134):<br><br>Created a new partition 1 of <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;Linux filesystem&#x27;</span> and of size 931.5 GiB.<br></code></pre></td></tr></table></figure>
+<p>最后输入<strong>w</strong>，保存并写入，按<strong>q</strong>是不保存并退出</p>
+<h2 id="格式化硬盘"><a href="#格式化硬盘" class="headerlink" title="格式化硬盘"></a>格式化硬盘</h2><p>在进行磁盘分区之后我们还需要格式化，不然自动挂载的时候会提示找不到硬盘</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sudo mkfs.ext4 /dev/sda1 <span class="hljs-comment">#格式化为ext4格式</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="启动自动挂载"><a href="#启动自动挂载" class="headerlink" title="启动自动挂载"></a>启动自动挂载</h2><p>到这就可以自动使用<strong>mount</strong>挂载到想用的目录了，但是我这里想实现自动挂载，因此我们需要编辑**&#x2F;etc&#x2F;fstab**</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 首先，创建挂载点</span><br>sudo <span class="hljs-built_in">mkdir</span> /mnt/hd1 <span class="hljs-comment"># 这里的hd1就是我最后要挂载到的地方</span><br><span class="hljs-comment"># 然后，将硬盘信息输入</span><br>sudo vi /etc/fstab<br><span class="hljs-comment"># 在最后一行插入，/dev/sda1是硬盘位置 ，/mnt/hd1是挂载点 ，ext4是格式</span><br>/dev/sda1 /mnt/hd1 ext4 defaults 0 2<br></code></pre></td></tr></table></figure>
+<p>OK<br>现在重启就搞定了</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Ubuntu下自动挂载硬盘</p><p><a href="https://the-wolf.eu.org/posts/2023/09/2979931854.html">https://the-wolf.eu.org/posts/2023/09/2979931854.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Ryan</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-10</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-09-10</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/linux/">linux</a><a class="link-muted mr-2" rel="tag" href="/tags/Ubuntu/">Ubuntu</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/2023/09/3110814740.html"><span class="level-item">记录一下samba搭建</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="adsense"><div class="card-content"><div class="menu"><h3 class="menu-label">AD</h3><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9363493651623593" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9363493651623593" data-ad-slot="9050780588" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push();</script></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-10T11:27:32.000Z">2023-09-10</time></p><p class="title"><a href="/posts/2023/09/2979931854.html">Ubuntu下自动挂载硬盘</a></p><p class="categories"><a href="/categories/linux/">linux</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-10T09:42:30.000Z">2023-09-10</time></p><p class="title"><a href="/posts/2023/09/3110814740.html">记录一下samba搭建</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-08T08:59:02.000Z">2023-09-08</time></p><p class="title"><a href="/posts/2023/09/1910668830.html">Ubuntu LTS 22.04 apt 换源电子科大</a></p><p class="categories"><a href="/categories/linux/">linux</a> / <a href="/categories/linux/%E6%8D%A2%E6%BA%90/">换源</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-08T07:05:52.000Z">2023-09-08</time></p><p class="title"><a href="/posts/2023/09/633871425.html">记一次静态博客迁移到Cloudflare</a></p><p class="categories"><a href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2023-09-06T07:58:39.000Z">2023-09-06</time></p><p class="title"><a href="/posts/2023/09/2146242180.html">Markdown 支持的代码块</a></p><p class="categories"><a href="/categories/markdown/">markdown</a></p></div></article></div></div><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/img/logo.png" alt="Ryan"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Ryan</p><p class="is-size-6 is-block">摸鱼</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">8</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ryan-1ee" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ryan-1ee"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#硬盘在哪里"><span class="level-left"><span class="level-item">1</span><span class="level-item">硬盘在哪里</span></span></a></li><li><a class="level is-mobile" href="#硬盘分区"><span class="level-left"><span class="level-item">2</span><span class="level-item">硬盘分区</span></span></a></li><li><a class="level is-mobile" href="#格式化硬盘"><span class="level-left"><span class="level-item">3</span><span class="level-item">格式化硬盘</span></span></a></li><li><a class="level is-mobile" href="#启动自动挂载"><span class="level-left"><span class="level-item">4</span><span class="level-item">启动自动挂载</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Ubuntu/"><span class="tag">Ubuntu</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/apt/"><span class="tag">apt</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/cloudflare/"><span class="tag">cloudflare</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/linux/"><span class="tag">linux</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/markdown/"><span class="tag">markdown</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/nginx/"><span class="tag">nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/v2ray/"><span class="tag">v2ray</span><span class="tag">1</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">Ryan&#039;s Blog</a><p class="is-size-7"><span>&copy; 2023 Ryan</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">本站共 <span id="busuanzi_value_site_uv">0</span> 个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="友链1" href="https://github.com/ryan-1ee"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "classic",
+        static: false,
+        position: "top",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/diy.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
