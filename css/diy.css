@@ -2,6 +2,10 @@
 #back-to-top.rise-up {
   z-index: 999;
 }
+/* 修补封面 */
+.card .card-image {
+  padding-inline: 10px;
+}
 /*暗黑模式*/
 .dark {
   background-color: #121212;
