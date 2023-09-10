@@ -2,6 +2,9 @@
 #back-to-top.rise-up {
   z-index: 999;
 }
+html {
+  background: #c9ccd3;
+}
 /* 修补封面 */
 .card .card-image {
   padding-inline: 10px;
